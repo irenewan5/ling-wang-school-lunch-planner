@@ -1,6 +1,6 @@
-# Project Title
+# School Lunch Planner
 
-School Lunch Planner
+
 
 ## Overview
 
@@ -52,7 +52,7 @@ Parents or guardians who prepare school lunches for their children.
 
 ### Mockups
 
-attachments
+![Mockup](./mockup.png)
 
 ### Data
 
