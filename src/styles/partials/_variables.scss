@@ -1,14 +1,11 @@
-$primary-text-color: #13182c; //for global text color
-$primary-CTA-color: #2e66e5; //for interactive elements
+$primary-text-color: #34606f; //for global text color
+$primary-bg-color: #ede8d7;
 
-$secondary-text-color: #5c667e; // for table column headers & placeholder text --- SLATE
-$divider-color: #bdc5d5; // for outlines, dividers, borders, table sorting icon
+$secondary-text-color: #ffffff; // for table column headers & placeholder text --- SLATE
+$secondary-bg-color: #233d45;
 
-$primary-background-color: #f7f8f9; // for page background, table column header background, CTA background
-$secondary-background-color: #232940; //for top navigation header background, CTA button hover state background
-
-$instock-lable-color: #158463;
-$outstock-lable-color: #c94515; // for “Out of stock” label, error states & delete icon
+$primary-action-color: #75a9c1; //for interactive elements
+$divider-color: #75a9c1; // for outlines, dividers, borders, table sorting icon
 
 $tablet-width: 768px;
 $desktop-width: 1280px;
