@@ -4,8 +4,7 @@ import chevronRightIcon from "../../assets/icons/chevron-right.svg";
 import "./WeekPicker.scss";
 
 function WeekPicker({ startDateOfWeek, onChange }) {
-  const startDate =
-    dayjs(startDateOfWeek) ?? dayjs().startOf("week").add(1, "day");
+  const startDate = startDateOfWeek ?? dayjs().startOf("week").add(1, "day");
   const endDate = startDate.add(4, "day");
 
   function selectPreviousWeek() {
