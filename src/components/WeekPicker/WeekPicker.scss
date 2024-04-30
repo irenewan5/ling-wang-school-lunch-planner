@@ -1,0 +1,19 @@
+.weekpicker {
+  height: 3em;
+
+  display: flex;
+  align-items: stretch;
+  & > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  button {
+    background-color: transparent;
+    cursor: pointer;
+    height: auto;
+  }
+  &__week {
+    flex: 1;
+  }
+}

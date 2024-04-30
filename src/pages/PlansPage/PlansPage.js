@@ -1,5 +1,11 @@
+import WeekPicker from "../../components/WeekPicker/WeekPicker";
+
 function PlansPage() {
-  return <>PlansPage</>;
+  return (
+    <>
+      <WeekPicker />
+    </>
+  );
 }
 
 export default PlansPage;
