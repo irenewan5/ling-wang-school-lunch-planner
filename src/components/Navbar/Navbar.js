@@ -12,9 +12,6 @@ function Navbar() {
         <li className="navbar__menu-item">
           <NavLink to="/profile">Profile</NavLink>
         </li>
-        <li className="navbar__menu-item">
-          <NavLink to="/logout">Log out</NavLink>
-        </li>
       </ul>
     </div>
   );
