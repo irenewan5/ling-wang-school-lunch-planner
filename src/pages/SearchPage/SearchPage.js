@@ -1,17 +1,14 @@
 import axios from "axios";
 import { useState } from "react";
 import recipesData from "../../assets/data/recipes.json";
+import api from "../../libs/api";
 
 function SearchPage() {
   const [q, setQ] = useState("");
   const [recipes, setRecipes] = useState(recipesData);
 
   const search = async () => {
-    const resp = await axios.get("http://localhost:3001/recipes", {
-      params: {
-        q,
-      },
-    });
+    const resp = await api.searchRecipes(q);
     setRecipes(resp.data);
   };
 
