@@ -1,4 +1,5 @@
 import "./App.scss";
+import { useEffect } from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import PlansPage from "./pages/PlansPage/PlansPage";
 import SearchPage from "./pages/SearchPage/SearchPage";
@@ -6,8 +7,16 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RecipePage from "./pages/RecipePage/RecipePage";
 import Navbar from "./components/Navbar/Navbar";
+import api from "./libs/api";
 
 function App() {
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      api.setToken(token);
+    }
+  }, []);
+
   return (
     <BrowserRouter>
       <Navbar />

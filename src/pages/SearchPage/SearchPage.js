@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useState } from "react";
 import recipesData from "../../assets/data/recipes.json";
 import api from "../../libs/api";

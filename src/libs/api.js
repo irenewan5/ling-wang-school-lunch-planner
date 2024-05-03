@@ -7,6 +7,10 @@ class Api {
     this.baseUrl = baseUrl;
   }
 
+  setToken(token) {
+    this.token = token;
+  }
+
   async createToken(username, password) {
     const response = await axios.post(`${this.baseUrl}/token`, {
       username,
@@ -19,6 +23,21 @@ class Api {
     const response = await axios.get(`${this.baseUrl}/recipes`, {
       params: {
         q,
+      },
+      headers: {
+        token: this.token,
+      },
+    });
+    return response.data;
+  }
+
+  async getKids() {
+    const response = await axios.get(`${this.baseUrl}/kids`, {
+      params: {
+        q,
+      },
+      headers: {
+        token: this.token,
       },
     });
     return response.data;
