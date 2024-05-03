@@ -1,10 +1,10 @@
 import chevronLeftIcon from "../../assets/icons/chevron-left.svg";
 import chevronRightIcon from "../../assets/icons/chevron-right.svg";
+import { getMonday } from "../../libs/utils";
 import "./WeekPicker.scss";
 
 function WeekPicker({ date, onChange }) {
-  const monday =
-    date.day() === 6 ? date.add(2, "days") : date.startOf("week").add(1, "day");
+  const monday = getMonday(date);
 
   const friday = monday.add(4, "day");
 
