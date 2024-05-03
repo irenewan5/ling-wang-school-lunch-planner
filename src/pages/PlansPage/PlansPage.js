@@ -5,13 +5,13 @@ import KidPicker from "../../components/KidPicker/KidPicker";
 
 function PlansPage() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const onWeekChange = (newStartDate) => {
+  const onWeekChange = (newDate) => {
     const params = new URLSearchParams(searchParams);
-    params.set("startDate", newStartDate.format("YYYY-MM-DD"));
+    params.set("date", newDate.format("YYYY-MM-DD"));
     setSearchParams(params);
   };
 
-  const startDate = dayjs(searchParams.get("startDate") ?? undefined);
+  const date = dayjs(searchParams.get("date") ?? undefined);
 
   const onKidChange = (newKidId) => {
     const params = new URLSearchParams(searchParams);
@@ -21,7 +21,7 @@ function PlansPage() {
   const kidId = searchParams.get("kidId") ?? undefined;
   return (
     <>
-      <WeekPicker startDateOfWeek={startDate} onChange={onWeekChange} />
+      <WeekPicker date={date} onChange={onWeekChange} />
       <KidPicker kidId={kidId} onChange={onKidChange} />
     </>
   );

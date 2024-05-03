@@ -1,18 +1,19 @@
-import dayjs from "dayjs";
 import chevronLeftIcon from "../../assets/icons/chevron-left.svg";
 import chevronRightIcon from "../../assets/icons/chevron-right.svg";
 import "./WeekPicker.scss";
 
-function WeekPicker({ startDateOfWeek, onChange }) {
-  const startDate = startDateOfWeek ?? dayjs().startOf("week").add(1, "day");
-  const endDate = startDate.add(4, "day");
+function WeekPicker({ date, onChange }) {
+  const monday =
+    date.day() === 6 ? date.add(2, "days") : date.startOf("week").add(1, "day");
+
+  const friday = monday.add(4, "day");
 
   function selectPreviousWeek() {
-    onChange(startDate.add(-1, "week"));
+    onChange(monday.add(-1, "week"));
   }
 
   function selectNextWeek() {
-    onChange(startDate.add(1, "week"));
+    onChange(monday.add(1, "week"));
   }
 
   return (
@@ -21,7 +22,7 @@ function WeekPicker({ startDateOfWeek, onChange }) {
         <img src={chevronLeftIcon} alt="Previous week" />
       </button>
       <div className="weekpicker__week">
-        {startDate.format("MMM D")} - {endDate.format("MMM D")}
+        {monday.format("MMM D")} - {friday.format("MMM D")}
       </div>
       <button className="weekpicker__button" onClick={selectNextWeek}>
         <img src={chevronRightIcon} alt="Next week" />
