@@ -32,8 +32,21 @@ class Api {
   }
 
   async getKids() {
-    console.log(1111, this.token);
     const response = await axios.get(`${this.baseUrl}/kids`, {
+      headers: this.getAuthHeaders(),
+    });
+    return response.data;
+  }
+
+  async getMyInfo() {
+    const response = await axios.get(`${this.baseUrl}/users/me`, {
+      headers: this.getAuthHeaders(),
+    });
+    return response.data;
+  }
+
+  async updateMyInfo(info) {
+    const response = await axios.put(`${this.baseUrl}/users/me`, info, {
       headers: this.getAuthHeaders(),
     });
     return response.data;
