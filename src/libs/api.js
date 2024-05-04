@@ -38,6 +38,34 @@ class Api {
     return response.data;
   }
 
+  async addKid(name) {
+    const response = await axios.post(
+      `${this.baseUrl}/kids`,
+      { name },
+      {
+        headers: this.getAuthHeaders(),
+      }
+    );
+    return response.data;
+  }
+
+  async updateKid(id, name) {
+    const response = await axios.put(
+      `${this.baseUrl}/kids/${id}`,
+      { name },
+      {
+        headers: this.getAuthHeaders(),
+      }
+    );
+    return response.data;
+  }
+
+  async removeKid(id) {
+    const response = await axios.delete(`${this.baseUrl}/kids/${id}`, {
+      headers: this.getAuthHeaders(),
+    });
+    return response.data;
+  }
   async getMyInfo() {
     const response = await axios.get(`${this.baseUrl}/users/me`, {
       headers: this.getAuthHeaders(),

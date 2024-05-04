@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../../libs/api";
+import updateIcon from "../../assets/icons/floppy.svg";
 
 function MyInfoForm() {
   const [name, setName] = useState("");
@@ -40,7 +41,9 @@ function MyInfoForm() {
           />
         </div>
         <div>
-          <button>Update</button>
+          <button>
+            <img src={updateIcon} alt="Update Icon" />
+          </button>
         </div>
       </form>
     </>
