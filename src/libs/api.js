@@ -31,6 +31,13 @@ class Api {
     return response.data;
   }
 
+  async getRecipeDetails(id) {
+    const response = await axios.get(`${this.baseUrl}/recipes/${id}`, {
+      headers: this.getAuthHeaders(),
+    });
+    return response.data;
+  }
+
   async getKids() {
     const response = await axios.get(`${this.baseUrl}/kids`, {
       headers: this.getAuthHeaders(),
@@ -46,6 +53,42 @@ class Api {
         headers: this.getAuthHeaders(),
       }
     );
+    return response.data;
+  }
+
+  async getPlans(kidId, startDate, endDate) {
+    const response = await axios.get(`${this.baseUrl}/plans`, {
+      params: {
+        kidId,
+        startDate,
+        endDate,
+      },
+      headers: this.getAuthHeaders(),
+    });
+    return response.data;
+  }
+
+  async addPlan(date, kidId, recipe) {
+    const response = await axios.post(
+      `${this.baseUrl}/plans`,
+      {
+        date,
+        kid_id: kidId,
+        recipe_id: recipe.id,
+        recipe_image: recipe.image,
+        recipe_name: recipe.label,
+      },
+      {
+        headers: this.getAuthHeaders(),
+      }
+    );
+    return response.data;
+  }
+
+  async removePlan(id) {
+    const response = await axios.delete(`${this.baseUrl}/plans/${id}`, {
+      headers: this.getAuthHeaders(),
+    });
     return response.data;
   }
 

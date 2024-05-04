@@ -1,14 +1,16 @@
 import { useState } from "react";
 import recipesData from "../../assets/data/recipes.json";
 import api from "../../libs/api";
+import { Link, useSearchParams } from "react-router-dom";
 
 function SearchPage() {
   const [q, setQ] = useState("");
   const [recipes, setRecipes] = useState(recipesData);
+  const [searchParams] = useSearchParams();
 
   const search = async () => {
-    const resp = await api.searchRecipes(q);
-    setRecipes(resp.data);
+    const result = await api.searchRecipes(q);
+    setRecipes(result);
   };
 
   return (
@@ -19,12 +21,17 @@ function SearchPage() {
       </div>
       <div>
         {recipes.items?.map((item) => (
-          <div key={item.id}>
+          <Link
+            key={item.id}
+            to={`/recipes/${item.id}?date=${searchParams.get(
+              "date"
+            )}&kidId=${searchParams.get("kidId")}`}
+          >
             <div>{item.label}</div>
             <div>
               <img src={item.image} />
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </>

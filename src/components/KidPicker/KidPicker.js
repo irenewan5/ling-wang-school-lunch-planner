@@ -1,15 +1,9 @@
-import { useEffect, useState } from "react";
 import chevronLeftIcon from "../../assets/icons/chevron-left.svg";
 import chevronRightIcon from "../../assets/icons/chevron-right.svg";
 import "./KidPicker.scss";
 
-function KidPicker({ kidId, onChange }) {
-  const [kids, setKids] = useState([
-    { id: "1", name: "John Doe" },
-    { id: "2", name: "Jane Doe" },
-  ]);
-
-  const selectedKidId = kidId ?? kids[0].id;
+function KidPicker({ kids, kidId, onChange }) {
+  const selectedKidId = kidId;
   const selectedKid = kids.find((kid) => kid.id === selectedKidId);
 
   function selectLastKid() {
