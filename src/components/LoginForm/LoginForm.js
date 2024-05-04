@@ -1,15 +1,14 @@
-import axios from "axios";
 import api from "../../libs/api";
 
 function LoginForm({ onLogin }) {
   const onSubmit = async (evt) => {
     evt.preventDefault();
     try {
-      await api.createToken(
+      const token = await api.createToken(
         evt.target.username.value,
         evt.target.password.value
       );
-      onLogin();
+      onLogin(token);
     } catch (e) {
       alert(e.response.data.message);
     }

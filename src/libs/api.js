@@ -7,8 +7,10 @@ class Api {
     this.baseUrl = baseUrl;
   }
 
-  setToken(token) {
-    this.token = token;
+  getAuthHeaders() {
+    return {
+      token: localStorage.getItem("token"),
+    };
   }
 
   async createToken(username, password) {
@@ -16,7 +18,7 @@ class Api {
       username,
       password,
     });
-    localStorage.setItem("token", response.data.token);
+    return response.data.token;
   }
 
   async searchRecipes(q) {
@@ -24,21 +26,15 @@ class Api {
       params: {
         q,
       },
-      headers: {
-        token: this.token,
-      },
+      headers: this.getAuthHeaders(),
     });
     return response.data;
   }
 
   async getKids() {
+    console.log(1111, this.token);
     const response = await axios.get(`${this.baseUrl}/kids`, {
-      params: {
-        q,
-      },
-      headers: {
-        token: this.token,
-      },
+      headers: this.getAuthHeaders(),
     });
     return response.data;
   }

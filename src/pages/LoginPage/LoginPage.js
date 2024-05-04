@@ -1,11 +1,15 @@
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
 import LoginForm from "../../components/LoginForm/LoginForm";
+import context from "../../libs/context";
 
 function LoginPage() {
-  const navigate = useNavigate();
-  const onLogin = () => {
-    navigate("/");
+  const { setToken } = useContext(context);
+
+  const onLogin = (token) => {
+    localStorage.setItem("token", token);
+    setToken(token);
   };
+
   return (
     <>
       <LoginForm onLogin={onLogin} />
