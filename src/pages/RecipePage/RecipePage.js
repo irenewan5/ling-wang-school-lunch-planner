@@ -1,7 +1,13 @@
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import {
+  Link,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
 import RecipeDetails from "../../components/RecipeDetails/RecipeDetails";
 import { useEffect, useState } from "react";
 import api from "../../libs/api";
+import chevronLeftIcon from "../../assets/icons/chevron-left.svg";
 
 function RecipePage() {
   const { id } = useParams();
@@ -14,26 +20,41 @@ function RecipePage() {
     setRecipe(result);
   };
 
-  useEffect(() => {
-    loadRecipe();
-  }, []);
+  const kidId = searchParams.get("kidId");
+  const date = searchParams.get("date");
 
   const onAdd = async () => {
-    const kidId = searchParams.get("kidId");
-    const date = searchParams.get("date");
     if (kidId && date && recipe) {
       await api.addPlan(date, kidId, recipe);
       navigate(`/plans?date=${date}&kidId=${kidId}`);
     }
   };
+
+  useEffect(() => {
+    loadRecipe();
+  }, []);
+
   return (
     <>
+      <div className="toolbar">
+        <button
+          className="toolbar__button"
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
+          <img src={chevronLeftIcon} alt="Back Icon" />
+          Go back
+        </button>
+      </div>
       {recipe && (
         <>
           <RecipeDetails recipe={recipe} />
-          <div>
-            <button onClick={onAdd}>Add to plan</button>
-          </div>
+          {kidId && date && recipe && (
+            <div>
+              <button onClick={onAdd}>Add to plan</button>
+            </div>
+          )}
         </>
       )}
     </>

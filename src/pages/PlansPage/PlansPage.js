@@ -1,4 +1,4 @@
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import WeekPicker from "../../components/WeekPicker/WeekPicker";
 import dayjs from "dayjs";
 import KidPicker from "../../components/KidPicker/KidPicker";
@@ -74,8 +74,10 @@ function PlansPage() {
                   <div>
                     {plan ? (
                       <div>
-                        <img src={plan.recipe_image} />
-                        <div>{plan.recipe_name}</div>
+                        <Link to={`/recipes/${plan.recipe_id}`}>
+                          <img src={plan.recipe_image} />
+                          <div>{plan.recipe_name}</div>
+                        </Link>
                         <button
                           onClick={() => {
                             navigate(`/recipes?kidId=${kidId}&date=${date}`);
