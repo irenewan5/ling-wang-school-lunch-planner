@@ -11,13 +11,20 @@
     &-item {
       display: flex;
       margin-bottom: 0.5em;
-      gap: 0.5em;
       padding-bottom: 0.5em;
       border-bottom: 1px solid #00000015;
       align-items: center;
 
+      &:nth-last-child(1) {
+        border-bottom: none;
+      }
+
       &-active {
         background-color: $card-bg-color;
+
+        @include print {
+          background-color: transparent;
+        }
       }
     }
     &-image {
@@ -25,12 +32,14 @@
     }
     &-info {
       flex: 1;
+      padding: 0 0.5em;
     }
     &-name {
       font-weight: bold;
       font-size: 1.1em;
     }
-    &-toggle {
+    &-toggle,
+    &-check {
       align-self: stretch;
       padding: 0 0.5em;
       display: flex;
@@ -39,5 +48,9 @@
         width: 1.5em;
       }
     }
+  }
+
+  @include print {
+    margin: 3em 3em;
   }
 }
