@@ -80,6 +80,8 @@ button {
 
 input {
   font-family: "Titillium Web";
+  outline: none;
+  padding: 0.25em 0.5em;
 }
 
 .action {
@@ -108,4 +110,23 @@ input {
   display: flex;
   justify-content: center;
   gap: 1em;
+}
+
+.form {
+  &__field {
+    padding: 0.5em 0;
+    &-label {
+      display: block;
+      font-size: 1.1em;
+    }
+    &-input {
+      padding: 0.5em;
+      width: 80%;
+      border: none;
+      font-size: 1.1em;
+    }
+  }
+  &__actions {
+    padding: 1em 0;
+  }
 }

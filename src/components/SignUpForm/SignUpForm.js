@@ -17,20 +17,20 @@ function SignUpForm({ onSignedUp, onLogin }) {
     }
   };
   return (
-    <form className="signupform" onSubmit={onSubmit}>
-      <div className="signupform__field">
+    <form className="form" onSubmit={onSubmit}>
+      <div className="form__field">
         <label htmlFor="name">Name</label>
         <input id="name" />
       </div>
-      <div className="signupform__field">
+      <div className="form__field">
         <label htmlFor="email">Email</label>
         <input id="email" />
       </div>
-      <div className="signupform__field">
+      <div className="form__field">
         <label htmlFor="username">Username</label>
         <input id="username" />
       </div>
-      <div className="signupform__field">
+      <div className="form__field">
         <label htmlFor="password">Password</label>
         <input id="password" type="password" />
       </div>

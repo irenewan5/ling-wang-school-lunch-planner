@@ -14,12 +14,12 @@ function LoginForm({ onLogin, onSignUp }) {
     }
   };
   return (
-    <form className="loginform" onSubmit={onSubmit}>
-      <div className="loginform__field">
+    <form className="form" onSubmit={onSubmit}>
+      <div className="form__field">
         <label htmlFor="username">Username</label>
         <input id="username" />
       </div>
-      <div className="loginform__field">
+      <div className="form__field">
         <label htmlFor="password">Password</label>
         <input id="password" type="password" />
       </div>

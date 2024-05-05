@@ -1,0 +1,40 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixin" as *;
+
+.kids {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+
+  &__kid {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    background-color: $card-bg-color;
+    align-items: center;
+
+    &-image {
+      padding: 10vw 20vw;
+      img {
+        width: 50vw;
+        height: 50vw;
+        opacity: 0.1;
+      }
+    }
+
+    &-info {
+      align-self: stretch;
+      padding: 1em;
+      display: flex;
+
+      input {
+        border: none;
+        flex: 1;
+      }
+
+      button {
+        border-radius: 0;
+      }
+    }
+  }
+}

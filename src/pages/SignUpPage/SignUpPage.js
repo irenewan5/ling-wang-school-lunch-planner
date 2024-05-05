@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import SignUpForm from "../../components/SignUpForm/SignUpForm";
+import "./SignUpPage.scss";
 
 function SignUpPage() {
   const navigate = useNavigate();
@@ -13,9 +14,9 @@ function SignUpPage() {
   };
 
   return (
-    <>
+    <div className="signuppage">
       <SignUpForm onLogin={onLogin} onSignedUp={onSignedUp} />
-    </>
+    </div>
   );
 }
 
