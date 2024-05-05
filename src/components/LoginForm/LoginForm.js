@@ -1,6 +1,6 @@
 import api from "../../libs/api";
 
-function LoginForm({ onLogin }) {
+function LoginForm({ onLogin, onSignUp }) {
   const onSubmit = async (evt) => {
     evt.preventDefault();
     try {
@@ -24,6 +24,9 @@ function LoginForm({ onLogin }) {
         <input id="password" type="password" />
       </div>
       <div className="loginform__actions">
+        <button type="button" onClick={onSignUp}>
+          Sign Up
+        </button>
         <button type="submit">Login</button>
       </div>
     </form>

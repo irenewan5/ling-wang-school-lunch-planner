@@ -134,6 +134,11 @@ class Api {
     });
     return response.data;
   }
+
+  async signUp(user) {
+    const response = await axios.post(`${this.baseUrl}/users`, user);
+    return response.data;
+  }
 }
 
 const api = new Api(baseUrl);

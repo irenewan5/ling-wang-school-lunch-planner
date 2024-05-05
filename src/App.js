@@ -15,6 +15,7 @@ import RecipePage from "./pages/RecipePage/RecipePage";
 import Navbar from "./components/Navbar/Navbar";
 import context from "./libs/context";
 import ShoppingPage from "./pages/ShoppingPage/ShoppingPage";
+import SignUpPage from "./pages/SignUpPage/SignUpPage";
 
 function App() {
   const [token, setToken] = useState();
@@ -32,16 +33,17 @@ function App() {
         <Routes>
           {token && (
             <>
-              <Route path="/" element={<Navigate to="/plans" />} />
               <Route path="/plans" element={<PlansPage />} />
               <Route path="/shopping" element={<ShoppingPage />} />
               <Route path="/recipes" element={<SearchPage />} />
               <Route path="/recipes/:id" element={<RecipePage />} />
               <Route path="/profile" element={<ProfilePage />} />
+              <Route path="*" element={<Navigate to="/plans" />} />
             </>
           )}
           {!token && (
             <>
+              <Route path="/signup" element={<SignUpPage />} />
               <Route path="*" element={<LoginPage />} />
             </>
           )}
