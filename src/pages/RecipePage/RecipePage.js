@@ -8,6 +8,7 @@ import RecipeDetails from "../../components/RecipeDetails/RecipeDetails";
 import { useEffect, useState } from "react";
 import api from "../../libs/api";
 import chevronLeftIcon from "../../assets/icons/chevron-left.svg";
+import checkIcon from "../../assets/icons/check-lg.svg";
 
 function RecipePage() {
   const { id } = useParams();
@@ -51,8 +52,11 @@ function RecipePage() {
         <>
           <RecipeDetails recipe={recipe} />
           {kidId && date && recipe && (
-            <div>
-              <button onClick={onAdd}>Add to plan</button>
+            <div className="actions">
+              <button onClick={onAdd}>
+                <img src={checkIcon} alt="Add Icon" />
+                Add to plan
+              </button>
             </div>
           )}
         </>

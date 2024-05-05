@@ -42,6 +42,7 @@
     &-info {
       display: flex;
       padding: 0.5em 0.75em;
+      align-items: center;
     }
     &-name {
       flex: 1;
@@ -63,11 +64,5 @@
         opacity: 0.3;
       }
     }
-  }
-}
-.planpage {
-  &__actions {
-    padding: 1em;
-    text-align: center;
   }
 }

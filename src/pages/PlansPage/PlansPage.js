@@ -121,7 +121,7 @@ function PlansPage() {
               );
             })}
           </div>
-          <div className="planpage__actions">
+          <div className="actions">
             <button
               onClick={() => {
                 navigate(`/shopping?startDate=${startDate}&endDate=${endDate}`);
@@ -133,7 +133,7 @@ function PlansPage() {
           </div>
         </>
       ) : (
-        <div className="planpage__actions">
+        <div className="actions">
           <button
             onClick={() => {
               navigate("/profile");

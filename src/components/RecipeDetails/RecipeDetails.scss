@@ -1,0 +1,27 @@
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixin" as *;
+
+.recipedetails {
+  padding: 0.5em;
+  &__name {
+    margin-top: 0;
+  }
+  &__image {
+    width: 100%;
+  }
+  &__subtitle {
+    font-size: 1.1em;
+  }
+  &__labels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    &-label {
+      font-size: 0.9em;
+      background-color: $card-bg-color;
+      padding: 0.25em 0.5em;
+      border-radius: 0.25em;
+    }
+  }
+}
