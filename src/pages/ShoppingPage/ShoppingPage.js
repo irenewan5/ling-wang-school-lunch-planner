@@ -1,16 +1,21 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import pluralize from "pluralize";
+import { useReactToPrint } from "react-to-print";
 import api from "../../libs/api";
 import dayjs from "dayjs";
 import "./ShoppingPage.scss";
 import cartPlusIcon from "../../assets/icons/cart-plus.svg";
 import cartDashIcon from "../../assets/icons/cart-dash.svg";
+import squareIcon from "../../assets/icons/square.svg";
 
 function ShoppingPage() {
   const [searchParams] = useSearchParams();
   const startDate = searchParams.get("startDate");
   const endDate = searchParams.get("endDate");
+  const dates = `${dayjs(startDate).format("MMM D")} - ${dayjs(endDate).format(
+    "MMM D"
+  )}`;
 
   const [list, setList] = useState([]);
 
@@ -33,7 +38,11 @@ function ShoppingPage() {
     }
   };
 
-  const onPrint = () => {};
+  const contentToPrint = useRef(null);
+  const print = useReactToPrint({
+    documentTitle: `Shopping list for ${dates}`,
+    removeAfterPrint: true,
+  });
 
   useEffect(() => {
     if (startDate && endDate) {
@@ -42,59 +51,66 @@ function ShoppingPage() {
   }, [startDate, endDate]);
 
   return (
-    <div className="shoppinglist">
-      <h2 className="shoppinglist__title">
-        {mode === "ingredients" ? "Ingredients" : "Shopping List"}
-      </h2>
-      <div className="shoppinglist__dates">
-        {dayjs(startDate).format("MMM D")} - {dayjs(endDate).format("MMM D")}
-      </div>
-      <div className="shoppinglist__items"></div>
-      {(mode === "ingredients" ? list : itemsInCart).map((item) => {
-        const isItemInCart = itemsInCart.indexOf(item) !== -1;
-        return (
-          <div
-            className={`shoppinglist__items-item ${
-              isItemInCart ? "shoppinglist__items-item-active" : ""
-            }`}
-            key={item.foodId}
-          >
-            {item.image && (
-              <img
-                src={item.image}
-                alt={`${item.food} image`}
-                className="shoppinglist__items-image"
-              />
-            )}
-            <div className="shoppinglist__items-info">
-              <div className="shoppinglist__items-name">{item.food}</div>
-              <div className="shoppinglist__items-measures">
-                {item.measures.map((measure) => (
-                  <div key={`${item.foodId}-${measure.name}`}>
-                    {measure.quantity}{" "}
-                    {measure.name
-                      ? pluralize(
-                          measure.name === "<unit>" ? "piece" : measure.name,
-                          measure.quantity
-                        )
-                      : ""}
-                  </div>
-                ))}
-              </div>
-            </div>
+    <>
+      <div className="shoppinglist" ref={contentToPrint}>
+        <h2 className="shoppinglist__title">
+          {mode === "ingredients" ? "Ingredients" : "Shopping List"}
+        </h2>
+        <div className="shoppinglist__dates">{dates}</div>
+        <div className="shoppinglist__items"></div>
+        {(mode === "ingredients" ? list : itemsInCart).map((item) => {
+          const isItemInCart = itemsInCart.indexOf(item) !== -1;
+          return (
             <div
-              className="shoppinglist__items-toggle"
-              onClick={() => onToggle(item)}
+              className={`shoppinglist__items-item ${
+                isItemInCart ? "shoppinglist__items-item-active" : ""
+              }`}
+              key={item.foodId}
             >
-              {isItemInCart ? (
-                <img src={cartDashIcon} alt="Remove from cart" />
-              ) : (
-                <img src={cartPlusIcon} alt="Add to cart" />
+              {item.image && mode === "ingredients" && (
+                <img
+                  src={item.image}
+                  alt={`${item.food} image`}
+                  className="shoppinglist__items-image"
+                />
+              )}
+              <div className="shoppinglist__items-info">
+                <div className="shoppinglist__items-name">{item.food}</div>
+                <div className="shoppinglist__items-measures">
+                  {item.measures.map((measure) => (
+                    <div key={`${item.foodId}-${measure.name}`}>
+                      {measure.quantity}{" "}
+                      {measure.name
+                        ? pluralize(
+                            measure.name === "<unit>" ? "piece" : measure.name,
+                            measure.quantity
+                          )
+                        : ""}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              {mode === "ingredients" && (
+                <div
+                  className="shoppinglist__items-toggle"
+                  onClick={() => onToggle(item)}
+                >
+                  {isItemInCart ? (
+                    <img src={cartDashIcon} alt="Remove from cart" />
+                  ) : (
+                    <img src={cartPlusIcon} alt="Add to cart" />
+                  )}
+                </div>
+              )}
+              {mode === "shoppinglist" && (
+                <div className="shoppinglist__items-check">
+                  <img src={squareIcon} alt="Checkbox" />
+                </div>
               )}
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
       <div className="actions">
         {mode === "ingredients" && (
           <button onClick={() => setMode("shoppinglist")}>
@@ -109,11 +125,13 @@ function ShoppingPage() {
             >
               See all ingredients
             </button>
-            <button onClick={onPrint}>Print</button>
+            <button onClick={() => print(null, () => contentToPrint.current)}>
+              Print
+            </button>
           </>
         )}
       </div>
-    </div>
+    </>
   );
 }
 
