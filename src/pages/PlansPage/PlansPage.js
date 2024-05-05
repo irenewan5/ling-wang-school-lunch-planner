@@ -5,6 +5,10 @@ import KidPicker from "../../components/KidPicker/KidPicker";
 import { getMonday } from "../../libs/utils";
 import { useEffect, useState } from "react";
 import api from "../../libs/api";
+import "./PlansPage.scss";
+import editIcon from "../../assets/icons/edit-gray-24px.svg";
+import plusIcon from "../../assets/icons/plus-square-dotted.svg";
+import cartIcon from "../../assets/icons/cart4.svg";
 
 function PlansPage() {
   const navigate = useNavigate();
@@ -63,53 +67,73 @@ function PlansPage() {
       {kids.length > 0 ? (
         <>
           <KidPicker kids={kids} kidId={kidId} onChange={onKidChange} />
-          <div>
+          <div className="planlist">
             {days.map((day) => {
               const date = day.format("YYYY-MM-DD");
               const plan = plans.find((plan) => plan.date === date);
               return (
-                <div key={date}>
-                  <div>{day.format("ddd")}</div>
-                  <div>{day.format("DD")}</div>
-                  <div>
-                    {plan ? (
-                      <div>
-                        <Link to={`/recipes/${plan.recipe_id}`}>
-                          <img src={plan.recipe_image} />
-                          <div>{plan.recipe_name}</div>
-                        </Link>
+                <div className="planlist__item" key={date}>
+                  <div className="planlist__item-day">
+                    <div className="planlist__item-weekday">
+                      {day.format("ddd")}
+                    </div>
+                    <div className="planlist__item-date">
+                      {day.format("DD")}
+                    </div>
+                  </div>
+                  {plan ? (
+                    <div className="planlist__item-plan">
+                      <Link to={`/recipes/${plan.recipe_id}`}>
+                        <img
+                          className="planlist__item-img"
+                          src={plan.recipe_image}
+                          alt="Recipe Image"
+                        />
+                      </Link>
+                      <div className="planlist__item-info">
+                        <div className="planlist__item-name">
+                          {plan.recipe_name}
+                        </div>
+
                         <button
+                          className="planlist__item-button"
                           onClick={() => {
                             navigate(`/recipes?kidId=${kidId}&date=${date}`);
                           }}
                         >
-                          Change recipe
+                          <img src={editIcon} alt="Change Recipe" />
                         </button>
                       </div>
-                    ) : (
+                    </div>
+                  ) : (
+                    <div className="planlist__item-setplan">
                       <button
+                        className="planlist__item-button planlist__item-setbutton"
                         onClick={() => {
                           navigate(`/recipes?kidId=${kidId}&date=${date}`);
                         }}
                       >
-                        Add recipe
+                        <img src={plusIcon} alt="Set Recipe" />
                       </button>
-                    )}
-                  </div>
+                    </div>
+                  )}
                 </div>
               );
             })}
           </div>
-          <button
-            onClick={() => {
-              navigate(`/shopping?startDate=${startDate}&endDate=${endDate}`);
-            }}
-          >
-            Make a shopping list
-          </button>
+          <div className="planpage__actions">
+            <button
+              onClick={() => {
+                navigate(`/shopping?startDate=${startDate}&endDate=${endDate}`);
+              }}
+            >
+              <img src={cartIcon} alt="Make a shopping list" />
+              Make a shopping list
+            </button>
+          </div>
         </>
       ) : (
-        <>
+        <div className="planpage__actions">
           <button
             onClick={() => {
               navigate("/profile");
@@ -117,7 +141,7 @@ function PlansPage() {
           >
             Add a kid
           </button>
-        </>
+        </div>
       )}
     </>
   );

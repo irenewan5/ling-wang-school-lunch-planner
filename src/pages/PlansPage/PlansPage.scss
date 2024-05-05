@@ -1,0 +1,73 @@
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixin" as *;
+
+.planlist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1px;
+  &__item {
+    background-color: $card-bg-color;
+    width: 100%;
+    position: relative;
+    min-height: 15em;
+    &-day {
+      position: absolute;
+      top: 0;
+      right: 1.5em;
+      background-color: $secondary-bg-color;
+      color: white;
+      padding: 0.25em 0.75em;
+      box-shadow: 0.125em 0.125em 0 #fff6;
+      text-align: center;
+    }
+    &-weekday {
+      font-size: 0.75em;
+    }
+    &-date {
+      font-size: 1.25em;
+      margin-top: -0.25em;
+    }
+    &-recipe {
+      width: 100%;
+    }
+    &-img {
+      width: 100%;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+    }
+    &-info {
+      display: flex;
+      padding: 0.5em 0.75em;
+    }
+    &-name {
+      flex: 1;
+      font-weight: bold;
+      font-size: 1.25em;
+    }
+    &-button {
+      background-color: transparent;
+      padding: 0;
+    }
+    &-setplan {
+      height: 100vw;
+    }
+    &-setbutton {
+      width: 100%;
+      height: 100%;
+      img {
+        width: 5em;
+        opacity: 0.3;
+      }
+    }
+  }
+}
+.planpage {
+  &__actions {
+    padding: 1em;
+    text-align: center;
+  }
+}
