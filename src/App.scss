@@ -71,6 +71,11 @@ button {
   align-items: center;
   justify-content: center;
   gap: 0.25em;
+
+  &.secondary {
+    color: $primary-action-color;
+    background-color: $secondary-text-color;
+  }
 }
 
 input {
@@ -102,4 +107,5 @@ input {
   padding: 1em;
   display: flex;
   justify-content: center;
+  gap: 1em;
 }

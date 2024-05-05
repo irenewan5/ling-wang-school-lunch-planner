@@ -9,6 +9,7 @@ import "./PlansPage.scss";
 import editIcon from "../../assets/icons/edit-gray-24px.svg";
 import plusIcon from "../../assets/icons/plus-square-dotted.svg";
 import cartIcon from "../../assets/icons/cart4.svg";
+import personPlusIcon from "../../assets/icons/person-plus.svg";
 
 function PlansPage() {
   const navigate = useNavigate();
@@ -139,6 +140,7 @@ function PlansPage() {
               navigate("/profile");
             }}
           >
+            <img src={personPlusIcon} alt="Add a kid" />
             Add a kid
           </button>
         </div>

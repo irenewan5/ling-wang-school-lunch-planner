@@ -1,0 +1,43 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixin" as *;
+
+.shoppinglist {
+  padding: 0.5em;
+  &__dates {
+    margin-bottom: 1em;
+  }
+
+  &__items {
+    &-item {
+      display: flex;
+      margin-bottom: 0.5em;
+      gap: 0.5em;
+      padding-bottom: 0.5em;
+      border-bottom: 1px solid #00000015;
+      align-items: center;
+
+      &-active {
+        background-color: $card-bg-color;
+      }
+    }
+    &-image {
+      width: 4em;
+    }
+    &-info {
+      flex: 1;
+    }
+    &-name {
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+    &-toggle {
+      align-self: stretch;
+      padding: 0 0.5em;
+      display: flex;
+      align-items: center;
+      img {
+        width: 1.5em;
+      }
+    }
+  }
+}
