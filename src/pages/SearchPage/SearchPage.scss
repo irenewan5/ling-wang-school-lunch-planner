@@ -1,0 +1,48 @@
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixin" as *;
+
+.searchform {
+  display: flex;
+  padding: 0 0.5em;
+  &__input {
+    flex: 1;
+    border: 0;
+    background-color: #ffffffcc;
+    outline: none;
+    padding: 0 0.5em;
+    font-size: 1.1em;
+  }
+  &__button {
+    height: 2.5em;
+    border-radius: 0;
+  }
+}
+
+.searchresults {
+  padding: 0.5em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  &__item {
+    width: 100%;
+    background-color: $card-bg-color;
+    display: flex;
+    flex-direction: column;
+    color: inherit;
+    text-decoration: none;
+
+    &-image {
+      width: 100%;
+    }
+
+    &-info {
+      padding: 0.5em 0.75em;
+    }
+
+    &-name {
+      font-weight: bold;
+      font-size: 1.25rem;
+    }
+  }
+}
