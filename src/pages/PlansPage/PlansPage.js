@@ -100,6 +100,13 @@ function PlansPage() {
               );
             })}
           </div>
+          <button
+            onClick={() => {
+              navigate(`/shopping?startDate=${startDate}&endDate=${endDate}`);
+            }}
+          >
+            Make a shopping list
+          </button>
         </>
       ) : (
         <>

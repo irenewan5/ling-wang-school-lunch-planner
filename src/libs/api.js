@@ -77,6 +77,7 @@ class Api {
         recipe_id: recipe.id,
         recipe_image: recipe.image,
         recipe_name: recipe.label,
+        recipe_ingredients: JSON.stringify(recipe.ingredients),
       },
       {
         headers: this.getAuthHeaders(),
@@ -87,6 +88,17 @@ class Api {
 
   async removePlan(id) {
     const response = await axios.delete(`${this.baseUrl}/plans/${id}`, {
+      headers: this.getAuthHeaders(),
+    });
+    return response.data;
+  }
+
+  async getShoppingList(startDate, endDate) {
+    const response = await axios.get(`${this.baseUrl}/shopping`, {
+      params: {
+        startDate,
+        endDate,
+      },
       headers: this.getAuthHeaders(),
     });
     return response.data;
