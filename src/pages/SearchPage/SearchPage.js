@@ -1,5 +1,4 @@
 import { useState } from "react";
-import recipesData from "../../assets/data/recipes.json";
 import api from "../../libs/api";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import chevronLeftIcon from "../../assets/icons/chevron-left.svg";
@@ -7,7 +6,7 @@ import "./SearchPage.scss";
 
 function SearchPage() {
   const [q, setQ] = useState("");
-  const [recipes, setRecipes] = useState(recipesData);
+  const [recipes, setRecipes] = useState();
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
