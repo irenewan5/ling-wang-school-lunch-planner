@@ -6,7 +6,7 @@ import "./SearchPage.scss";
 
 function SearchPage() {
   const [q, setQ] = useState("");
-  const [recipes, setRecipes] = useState();
+  const [recipes, setRecipes] = useState([]);
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
