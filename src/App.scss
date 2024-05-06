@@ -77,6 +77,11 @@ button {
     color: $primary-action-color;
     background-color: $secondary-text-color;
   }
+
+  @include tablet {
+    font-size: 1.1em;
+    padding: 1.5em 2em;
+  }
 }
 
 input {
@@ -111,6 +116,9 @@ input {
   display: flex;
   justify-content: center;
   gap: 1em;
+  @include tablet {
+    padding: 2em 1em;
+  }
 }
 
 .form {

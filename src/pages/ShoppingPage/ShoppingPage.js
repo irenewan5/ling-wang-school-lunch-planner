@@ -57,59 +57,62 @@ function ShoppingPage() {
           {mode === "ingredients" ? "Ingredients" : "Shopping List"}
         </h2>
         <div className="shoppinglist__dates">{dates}</div>
-        <div className="shoppinglist__items"></div>
-        {(mode === "ingredients" ? list : itemsInCart).map((item) => {
-          const isItemInCart = itemsInCart.indexOf(item) !== -1;
-          return (
-            <div
-              className={`shoppinglist__items-item ${
-                isItemInCart ? "shoppinglist__items-item-active" : ""
-              }`}
-              key={item.foodId}
-            >
-              {item.image && mode === "ingredients" && (
-                <img
-                  src={item.image}
-                  alt={`${item.food} image`}
-                  className="shoppinglist__items-image"
-                />
-              )}
-              <div className="shoppinglist__items-info">
-                <div className="shoppinglist__items-name">{item.food}</div>
-                <div className="shoppinglist__items-measures">
-                  {item.measures.map((measure) => (
-                    <div key={`${item.foodId}-${measure.name}`}>
-                      {measure.quantity}{" "}
-                      {measure.name
-                        ? pluralize(
-                            measure.name === "<unit>" ? "piece" : measure.name,
-                            measure.quantity
-                          )
-                        : ""}
-                    </div>
-                  ))}
+        <div className="shoppinglist__items">
+          {(mode === "ingredients" ? list : itemsInCart).map((item) => {
+            const isItemInCart = itemsInCart.indexOf(item) !== -1;
+            return (
+              <div
+                className={`shoppinglist__items-item ${
+                  isItemInCart ? "shoppinglist__items-item-active" : ""
+                }`}
+                key={item.foodId}
+              >
+                {item.image && mode === "ingredients" && (
+                  <img
+                    src={item.image}
+                    alt={`${item.food} image`}
+                    className="shoppinglist__items-image"
+                  />
+                )}
+                <div className="shoppinglist__items-info">
+                  <div className="shoppinglist__items-name">{item.food}</div>
+                  <div className="shoppinglist__items-measures">
+                    {item.measures.map((measure) => (
+                      <div key={`${item.foodId}-${measure.name}`}>
+                        {measure.quantity}{" "}
+                        {measure.name
+                          ? pluralize(
+                              measure.name === "<unit>"
+                                ? "piece"
+                                : measure.name,
+                              measure.quantity
+                            )
+                          : ""}
+                      </div>
+                    ))}
+                  </div>
                 </div>
+                {mode === "ingredients" && (
+                  <div
+                    className="shoppinglist__items-toggle"
+                    onClick={() => onToggle(item)}
+                  >
+                    {isItemInCart ? (
+                      <img src={cartDashIcon} alt="Remove from cart" />
+                    ) : (
+                      <img src={cartPlusIcon} alt="Add to cart" />
+                    )}
+                  </div>
+                )}
+                {mode === "shoppinglist" && (
+                  <div className="shoppinglist__items-check">
+                    <img src={squareIcon} alt="Checkbox" />
+                  </div>
+                )}
               </div>
-              {mode === "ingredients" && (
-                <div
-                  className="shoppinglist__items-toggle"
-                  onClick={() => onToggle(item)}
-                >
-                  {isItemInCart ? (
-                    <img src={cartDashIcon} alt="Remove from cart" />
-                  ) : (
-                    <img src={cartPlusIcon} alt="Add to cart" />
-                  )}
-                </div>
-              )}
-              {mode === "shoppinglist" && (
-                <div className="shoppinglist__items-check">
-                  <img src={squareIcon} alt="Checkbox" />
-                </div>
-              )}
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
       <div className="actions">
         {mode === "ingredients" && (

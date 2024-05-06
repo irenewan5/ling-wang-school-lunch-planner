@@ -88,12 +88,11 @@ function PlansPage() {
                   </div>
                   {plan ? (
                     <div className="planlist__item-plan">
-                      <Link to={`/recipes/${plan.recipe_id}`}>
-                        <img
-                          className="planlist__item-img"
-                          src={plan.recipe_image}
-                          alt="Recipe Image"
-                        />
+                      <Link
+                        className="planlist__item-image"
+                        to={`/recipes/${plan.recipe_id}`}
+                      >
+                        <img src={plan.recipe_image} alt="Recipe Image" />
                       </Link>
                       <div className="planlist__item-info">
                         <div className="planlist__item-name">
