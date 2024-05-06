@@ -15,6 +15,7 @@ function SignUpPage() {
 
   return (
     <div className="signuppage">
+      <h2>Sign Up</h2>
       <SignUpForm onLogin={onLogin} onSignedUp={onSignedUp} />
     </div>
   );

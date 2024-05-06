@@ -128,5 +128,13 @@ input {
   }
   &__actions {
     padding: 1em 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1em;
+
+    a {
+      color: inherit;
+    }
   }
 }

@@ -16,18 +16,31 @@ function LoginForm({ onLogin, onSignUp }) {
   return (
     <form className="form" onSubmit={onSubmit}>
       <div className="form__field">
-        <label htmlFor="username">Username</label>
-        <input id="username" />
+        <label htmlFor="username" className="form__field-label">
+          Username
+        </label>
+        <input
+          id="username"
+          className="form__field-input"
+          placeholder="Enter your username"
+        />
       </div>
       <div className="form__field">
-        <label htmlFor="password">Password</label>
-        <input id="password" type="password" />
+        <label htmlFor="password" className="form__field-label">
+          Password
+        </label>
+        <input
+          id="password"
+          type="password"
+          className="form__field-input"
+          placeholder="Enter your password"
+        />
       </div>
-      <div className="loginform__actions">
-        <button type="button" onClick={onSignUp}>
-          Sign Up
-        </button>
+      <div className="form__actions">
         <button type="submit">Login</button>
+        <a href="#" onClick={onSignUp}>
+          Sign Up
+        </a>
       </div>
     </form>
   );
