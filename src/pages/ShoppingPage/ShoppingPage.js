@@ -10,9 +10,10 @@ import cartDashIcon from "../../assets/icons/cart-dash.svg";
 import squareIcon from "../../assets/icons/square.svg";
 
 function ShoppingPage() {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const startDate = searchParams.get("startDate");
   const endDate = searchParams.get("endDate");
+  const mode = searchParams.get("mode") ?? "ingredients";
   const dates = `${dayjs(startDate).format("MMM D")} - ${dayjs(endDate).format(
     "MMM D"
   )}`;
@@ -21,7 +22,11 @@ function ShoppingPage() {
 
   const [itemsInCart, setItemsInCart] = useState([]);
 
-  const [mode, setMode] = useState("ingredients");
+  const setMode = (newMode) => {
+    const params = new URLSearchParams(searchParams);
+    params.set("mode", newMode);
+    setSearchParams(params);
+  };
 
   const getList = async () => {
     const list = await api.getShoppingList(startDate, endDate);
@@ -63,7 +68,9 @@ function ShoppingPage() {
             return (
               <div
                 className={`shoppinglist__items-item ${
-                  isItemInCart ? "shoppinglist__items-item-active" : ""
+                  mode === "ingredients" && isItemInCart
+                    ? "shoppinglist__items-item-active"
+                    : ""
                 }`}
                 key={item.foodId}
               >
