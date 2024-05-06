@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import "./Navbar.scss";
 
 function Navbar() {
@@ -8,7 +8,9 @@ function Navbar() {
     location.pathname.indexOf("/profile") === 0;
   return (
     <div className="navbar">
-      <div className="navbar__logo">School Lunch Planner</div>
+      <Link className="navbar__logo" to="/">
+        School Lunch Planner
+      </Link>
       {isMenuVisible && (
         <ul className="navbar__menu">
           <li className="navbar__menu-item">
