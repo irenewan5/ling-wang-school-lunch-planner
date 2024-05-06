@@ -7,7 +7,6 @@ import dayjs from "dayjs";
 import "./ShoppingPage.scss";
 import cartPlusIcon from "../../assets/icons/cart-plus.svg";
 import cartDashIcon from "../../assets/icons/cart-dash.svg";
-import squareIcon from "../../assets/icons/square.svg";
 import foodIcon from "../../assets/icons/carrot-svgrepo-com.svg";
 
 function ShoppingPage() {
@@ -118,12 +117,19 @@ function ShoppingPage() {
                 )}
                 {mode === "shoppinglist" && (
                   <div className="shoppinglist__items-check">
-                    <img src={squareIcon} alt="Checkbox" />
+                    <input type="checkbox" />
                   </div>
                 )}
               </div>
             );
           })}
+          {(mode === "ingredients" ? list : itemsInCart).length === 0 && (
+            <div className="shoppinglist__items-empty">
+              {mode === "ingredients"
+                ? "No ingredients found for this week, please make some plans."
+                : "Shopping list is empty, please choose the ingredients you need."}
+            </div>
+          )}
         </div>
       </div>
       <div className="actions">
@@ -135,14 +141,16 @@ function ShoppingPage() {
         {mode === "shoppinglist" && (
           <>
             <button
-              className="secondary"
+              className={itemsInCart.length > 0 ? "secondary" : ""}
               onClick={() => setMode("ingredients")}
             >
               See all ingredients
             </button>
-            <button onClick={() => print(null, () => contentToPrint.current)}>
-              Print
-            </button>
+            {itemsInCart.length > 0 && (
+              <button onClick={() => print(null, () => contentToPrint.current)}>
+                Print
+              </button>
+            )}
           </>
         )}
       </div>

@@ -8,6 +8,14 @@
   }
 
   &__items {
+    &-empty {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: gray;
+      font-style: italic;
+      height: 10em;
+    }
     &-item {
       display: flex;
       margin-bottom: 0.5em;
@@ -62,8 +70,10 @@
       padding: 0 0.5em;
       display: flex;
       align-items: center;
-      img {
+      input {
         width: 1.5em;
+        height: 1.5em;
+        border: 3px solid gray;
       }
     }
   }
