@@ -2,6 +2,7 @@ import { useState } from "react";
 import api from "../../libs/api";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import chevronLeftIcon from "../../assets/icons/chevron-left.svg";
+import searchIcon from "../../assets/icons/search-24px.svg";
 import "./SearchPage.scss";
 
 function SearchPage() {
@@ -36,7 +37,8 @@ function SearchPage() {
           placeholder="Search..."
         />
         <button className="searchform__button" onClick={search}>
-          search
+          <img src={searchIcon} alt="Search Icon" />
+          Search
         </button>
       </div>
       <div className="searchresults">

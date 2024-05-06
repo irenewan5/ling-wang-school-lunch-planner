@@ -4,13 +4,17 @@
 .searchform {
   display: flex;
   padding: 0 0.5em;
+
+  @include largetablet {
+    padding: 0.5em;
+  }
   &__input {
     flex: 1;
     border: 0;
     background-color: #ffffffcc;
     outline: none;
     padding: 0 0.5em;
-    font-size: 1.1em;
+    font-size: 1.4em;
   }
   &__button {
     height: 2.5em;
