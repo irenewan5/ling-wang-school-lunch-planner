@@ -2,11 +2,11 @@
 @use "./mixin" as *;
 
 .section {
-  margin: 0 $mobile-side-margin;
+  padding: 0 $mobile-side-padding;
   @include tablet {
-    margin: 0 $tablet-side-margin;
+    padding: 0 $tablet-side-padding;
   }
   @include desktop {
-    margin: 0 $desktop-side-margin;
+    padding: 0 $desktop-side-padding;
   }
 }

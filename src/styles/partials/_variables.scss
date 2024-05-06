@@ -9,12 +9,14 @@ $divider-color: #75a9c1; // for outlines, dividers, borders, table sorting icon
 
 $card-bg-color: #fcfcf1;
 
+$largemobile-width: 560px;
 $tablet-width: 768px;
+$largetablet-width: 960px;
 $desktop-width: 1280px;
 
-$mobile-side-margin: 1rem;
-$tablet-side-margin: 2.25rem;
-$desktop-side-margin: calc((100vw - 1020px) / 2);
+$mobile-side-padding: 0;
+$tablet-side-padding: 2.25rem;
+$desktop-side-padding: calc((100vw - 1020px) / 2);
 $desktop-content-width: 80%;
 
 $content-border-radius: 0.125rem;

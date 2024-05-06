@@ -1,4 +1,5 @@
 @use "./styles/partials/typography" as *;
+@use "./styles/partials/global" as *;
 @use "./styles/partials/variables" as *;
 @use "./styles/partials/mixin" as *;
 
@@ -136,5 +137,11 @@ input {
     a {
       color: inherit;
     }
+  }
+}
+
+.app {
+  &__body {
+    @extend .section;
   }
 }

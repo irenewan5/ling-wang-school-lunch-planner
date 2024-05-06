@@ -63,11 +63,15 @@ function PlansPage() {
   }, [kidId, startDate, endDate]);
 
   return (
-    <>
-      <WeekPicker date={date} onChange={onWeekChange} />
+    <div className="planspage">
+      <div className="planspage__toolbar">
+        <WeekPicker date={date} onChange={onWeekChange} />
+        {kids.length > 0 && (
+          <KidPicker kids={kids} kidId={kidId} onChange={onKidChange} />
+        )}
+      </div>
       {kids.length > 0 ? (
         <>
-          <KidPicker kids={kids} kidId={kidId} onChange={onKidChange} />
           <div className="planlist">
             {days.map((day) => {
               const date = day.format("YYYY-MM-DD");
@@ -145,7 +149,7 @@ function PlansPage() {
           </button>
         </div>
       )}
-    </>
+    </div>
   );
 }
 

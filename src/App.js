@@ -30,24 +30,26 @@ function App() {
     <Provider value={{ token, setToken }}>
       <BrowserRouter>
         <Navbar />
-        <Routes>
-          {token && (
-            <>
-              <Route path="/plans" element={<PlansPage />} />
-              <Route path="/shopping" element={<ShoppingPage />} />
-              <Route path="/recipes" element={<SearchPage />} />
-              <Route path="/recipes/:id" element={<RecipePage />} />
-              <Route path="/profile" element={<ProfilePage />} />
-              <Route path="*" element={<Navigate to="/plans" />} />
-            </>
-          )}
-          {!token && (
-            <>
-              <Route path="/signup" element={<SignUpPage />} />
-              <Route path="*" element={<LoginPage />} />
-            </>
-          )}
-        </Routes>
+        <div className="app__body">
+          <Routes>
+            {token && (
+              <>
+                <Route path="/plans" element={<PlansPage />} />
+                <Route path="/shopping" element={<ShoppingPage />} />
+                <Route path="/recipes" element={<SearchPage />} />
+                <Route path="/recipes/:id" element={<RecipePage />} />
+                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="*" element={<Navigate to="/plans" />} />
+              </>
+            )}
+            {!token && (
+              <>
+                <Route path="/signup" element={<SignUpPage />} />
+                <Route path="*" element={<LoginPage />} />
+              </>
+            )}
+          </Routes>
+        </div>
       </BrowserRouter>
     </Provider>
   );
