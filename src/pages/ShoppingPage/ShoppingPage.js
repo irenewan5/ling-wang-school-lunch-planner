@@ -8,6 +8,7 @@ import "./ShoppingPage.scss";
 import cartPlusIcon from "../../assets/icons/cart-plus.svg";
 import cartDashIcon from "../../assets/icons/cart-dash.svg";
 import squareIcon from "../../assets/icons/square.svg";
+import foodIcon from "../../assets/icons/carrot-svgrepo-com.svg";
 
 function ShoppingPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -74,12 +75,16 @@ function ShoppingPage() {
                 }`}
                 key={item.foodId}
               >
-                {item.image && mode === "ingredients" && (
+                {item.image ? (
                   <img
                     src={item.image}
                     alt={`${item.food} image`}
                     className="shoppinglist__items-image"
                   />
+                ) : (
+                  <div className="shoppinglist__items-image-placeholder">
+                    <img src={foodIcon} />
+                  </div>
                 )}
                 <div className="shoppinglist__items-info">
                   <div className="shoppinglist__items-name">{item.food}</div>
