@@ -7,11 +7,31 @@
   &__name {
     margin-top: 0;
   }
+  &__info {
+    @include tablet {
+      display: flex;
+      gap: 1em;
+    }
+  }
   &__image {
     width: 100%;
+    @include tablet {
+      width: 20em;
+      max-width: 50%;
+    }
+  }
+  &__ingredients {
+    @include tablet {
+      font-size: 1.1em;
+    }
   }
   &__subtitle {
     font-size: 1.1em;
+  }
+  &__ingredients &__subtitle {
+    @include tablet {
+      margin-top: 0;
+    }
   }
   &__labels {
     display: flex;
