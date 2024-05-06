@@ -81,6 +81,10 @@ button {
   @include tablet {
     font-size: 1.1em;
     padding: 1.5em 2em;
+    gap: 0.5em;
+    img {
+      width: 1.1em;
+    }
   }
 }
 

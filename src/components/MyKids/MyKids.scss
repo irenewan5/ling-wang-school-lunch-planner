@@ -40,12 +40,16 @@
       display: flex;
 
       input {
-        border: none;
         flex: 1;
+        font-size: 1.3em;
+        padding: 0.25em 0.5em;
+        display: block;
+        width: 0px;
       }
 
       button {
         border-radius: 0;
+        padding: 0 1em;
       }
     }
   }
