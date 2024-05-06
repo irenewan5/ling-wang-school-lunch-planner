@@ -9,7 +9,7 @@ import "./PlansPage.scss";
 import editIcon from "../../assets/icons/edit-gray-24px.svg";
 import plusIcon from "../../assets/icons/plus-square-dotted.svg";
 import cartIcon from "../../assets/icons/cart4.svg";
-import personPlusIcon from "../../assets/icons/person-plus.svg";
+import personPlusIcon from "../../assets/icons/person-plus-white.svg";
 
 function PlansPage() {
   const navigate = useNavigate();
