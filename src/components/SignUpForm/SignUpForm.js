@@ -25,7 +25,7 @@ function SignUpForm({ onSignedUp, onLogin }) {
         <input
           id="name"
           className="form__field-input"
-          placeholder="Enter you name"
+          placeholder="Enter your name"
         />
       </div>
       <div className="form__field">
